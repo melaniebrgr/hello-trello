@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# Ask the Met
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Visiting the Metropolitan Museum or Art in New York is not always feasible, even when there isn't a pandemic on. This shouldn't prevent us from appreciating and learning about the Met's collection though. With this simple app you can view a random piece or art, and create a list of questions and answers about it to review later.
 
-## Available Scripts
+## Architecture Description
 
-In the project directory, you can run:
+An art-oriented question and answer app.
 
-### `yarn start`
+### Users
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Users are students of art history, and are expected to be a handful per day.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Requirements
 
-### `yarn test`
+- An example question and answer is shown by default
+- Previously created questions and answers should be listed, and the answer only revealed on click.
+- Questions should be persisted
+- Questions can be sortable for convenience
+- Questions can be deleted
+- Questions can be edited
+- How to use the app should be communicated through tooltips
+- Optional: tests
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Additional context
 
-### `yarn build`
+Tech stack must include react and redux. The supplementary stack is tailwind (theming), react hook form (forms).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Architecture characteristics
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Architecture characterists are the "-ilities" particular to an application that can or should influence the overall application architecture. In the case of "Ask the Met", one such characteristic might be **resilience**. If the internet becomes unavailable, as a ~~user~~ art-lover, I wanted my questions and answers to be saved. Accordingly, offline caching was explored and localstorage was used to persist Q&As. If the art-lover refreshes the page the QAs are rehydrated from localstorage for instance. After successful caching in localstorage the next step would be to upload the Q&As to the db. The Q&As are less likely to be lost this way.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Modules
 
-### `yarn eject`
+To discover the core modules of the application I tried an "event storming" approach where I assumed events were used to communicate within and without the application (an approach that conforms well to a standard redux app). Then events were grouped and used to derive the modules. For the ~~user~~ art-lover, the following core events were envisioned:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Art requested
+- Q&A submitted
+- Q&A editted
+- Q&A deleted
+- Q&A sorted
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Based on these events, the following set of modules were derived:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Art presenter module ("Art requested")
+- Q&A capture module ("Q&A submitted")
+- Q&A editor module (Q&A editted, "Q&A deleted")
+- Q&A presenter module ("Q&A sorted")
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![modules](./assets/modules.png)
 
-## Learn More
+## Stories
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To help divide and organize the work, I created "user stories":
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [x] As an art-lover I want to formulate a question and answer about a piece and save it.
+- [x] As an art-lover I want to get a new, random art piece and see basic information about it.
+- [x] As an art-lover I only want to see the answers on click.
+- [x] As an art-lover I want to be able to edit or delete questions and answers I previously submitted.
+- [x] As an art-lover I want to organize my questions alphabetically.
+- [x] As an art-lover I want to understand how to use the app (through tooltips).
 
-### Code Splitting
+## Improvements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Like a work of art, an application is never done, we only stop working on it. Here's what I would like to do additionally:
 
-### Analyzing the Bundle Size
+- Improve unit test coverage, ideally any component or util that contains logic is covered by a unit test
+- Add e2e test coverage, ideally the core user flows of the application are covered by an e2e test
+- Extract common components to a component library, e.g. primary and secondary buttons
+- Introduce ramda and use it for data transformation
+- Add animation and/or transitions for a more natural feeling UI/UX
+- Replace direct localstorage calls with [Redux Persist](https://www.npmjs.com/package/redux-persist)
+- Persist QAs to a database
+- Handle error cases and introduce monitoring, e.g. Sentry
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Getting started
 
-### Making a Progressive Web App
+- `git clone git@github.com:melaniebrgr/ask-the-met.git`
+- `cd ask-the-met`
+- `yarn install` (node >=12.13.0)
+- `yarn start`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Preview
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![preview](./assets/preview.png)

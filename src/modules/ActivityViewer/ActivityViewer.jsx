@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { selectLists } from './activityViewer.selectors'
+import List from './components/List'
 
 function ActivityViewer() {
   const lists = useSelector(selectLists)
@@ -7,7 +8,7 @@ function ActivityViewer() {
   return (
     <>
       <h2>Lists</h2>
-      { lists.map(({ title }) => <p>{title}</p>) }
+      { lists.map(({ id, title }) => <List key={id} title={title} />) }
     </>
   );
 }

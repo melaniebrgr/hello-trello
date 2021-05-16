@@ -1,13 +1,8 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux'
-import { listDeleted } from '../../../store/domains/lists'
 import ListEditor from '../../ListEditor/ListEditor'
+import ListViewer from './ListViewer'
 
 function List({ id, title, children }) {
-  const dispatch = useDispatch()
-  const onDelete = () => {
-    dispatch(listDeleted(id))
-  }
   const [ listEditRequested, setListEditRequested ] = useState(false)
   const onToggleListCreationRequested = () => { 
     setListEditRequested(!listEditRequested)
@@ -17,10 +12,7 @@ function List({ id, title, children }) {
     <div>
       { listEditRequested
         ? <ListEditor id={id} title={title} onToggleListCreationRequested={onToggleListCreationRequested} />
-        : (<>
-            <h3>{title}{' '}<span onClick={onDelete}>➖</span><span onClick={onToggleListCreationRequested}>✏️</span></h3>
-            { children }
-          </>)
+        : <ListViewer id={id} title={title} onToggleListCreationRequested={onToggleListCreationRequested}>{children}</ListViewer>
       }
     </div>
   );

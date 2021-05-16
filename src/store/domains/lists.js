@@ -7,9 +7,13 @@ export const lists = createSlice({
     listCreated: (state, action) => {
       state.push(action.payload)
     },
+    listDelete: (state, action) => {
+      const i = state.findIndex(list => list.id === action.payload)
+      state.splice(i, 1);
+    },
   },
 })
 
-export const { listCreated } = lists.actions
+export const { listCreated, listDelete } = lists.actions
 
 export default lists.reducer

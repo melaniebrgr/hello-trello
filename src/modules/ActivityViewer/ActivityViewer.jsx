@@ -8,7 +8,7 @@ function ActivityViewer() {
   return (
     <>
       <h2>Lists</h2>
-      { lists.map(({ id, title }) => <List key={id} title={title} />) }
+      { lists.map(({ id, title }) => <List key={id} id={id} title={title} />) }
     </>
   );
 }

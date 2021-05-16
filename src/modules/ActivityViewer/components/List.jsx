@@ -1,7 +1,17 @@
-function List({ title }) {
+import { useDispatch } from 'react-redux'
+import { listDelete } from '../../../store/domains/lists'
+
+function List({ id, title }) {
+  const dispatch = useDispatch()
+  const onDelete = () => {
+    dispatch(listDelete(id))
+  }
+
   return (
     <div>
-      <h3>{title}</h3>
+      <header>
+        <h3>{title}{' '}<span onClick={onDelete}>-</span></h3>
+      </header>
     </div>
   );
 }

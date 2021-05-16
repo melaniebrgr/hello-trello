@@ -3,6 +3,10 @@ import { useDispatch } from 'react-redux'
 import TaskEditor from '../../TaskEditor/TaskEditor'
 import { taskDeleted } from '../../../store/domains/tasks'
 
+const taskListItemStyles = `
+  font-serif
+`
+
 function Task({ id, text }) {
   const [ taskEditRequested, setTaskEditRequested ] = useState(false)
   const onToggleTaskEditingRequested = () => { 
@@ -15,16 +19,16 @@ function Task({ id, text }) {
   }
 
   return (
-    <div>
+    <ul>
       { taskEditRequested
         ? <TaskEditor id={id} text={text} onToggleEdit={onToggleTaskEditingRequested} />
-        : (<>
-          <span>{text}</span>
-          <span onClick={onDelete}>➖</span>
-          <span onClick={onToggleTaskEditingRequested}>✏️</span>
-        </>)
+        : (<li className={taskListItemStyles}>
+          <span>{text}</span>{' '}
+          <span onClick={onToggleTaskEditingRequested}>[✏]</span>
+          <span onClick={onDelete}>[-]</span>
+        </li>)
       }
-    </div>
+    </ul>
   );
 }
 

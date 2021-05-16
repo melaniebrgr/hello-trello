@@ -2,6 +2,21 @@ import { useDispatch } from 'react-redux'
 import { useForm } from "react-hook-form"
 import { listEdited } from '../../store/domains/lists'
 
+const inputStyles = `
+  border rounded-sm border-indigo-500
+  px-2 py-0.5
+`
+
+const submitStyles = `
+  bg-indigo-500 hover:bg-indigo-700
+  px-2 py-0.5
+`
+
+const buttonStyles = `
+  cursor-pointer
+  text-left text-indigo-500 hover:text-indigo-700
+`
+
 function ListEditor({ id, title, onToggleEdit }) {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const dispatch = useDispatch()
@@ -12,10 +27,10 @@ function ListEditor({ id, title, onToggleEdit }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="title">title</label>
-      <input id="title" defaultValue={title} autoFocus {...register("title", { required: true })} />
-      {errors.question && <p>This field is required</p>}
-      <input type="submit" />
+      <input id="title" defaultValue={title} autoFocus {...register("title", { required: true })} className={inputStyles} />
+      {errors.question && <p> This field is required</p>}
+      <input type="submit" className={submitStyles} />{' '}
+      <button onClick={onToggleEdit} className={buttonStyles}>Cancel</button>
     </form>
   )
 }

@@ -9,6 +9,9 @@
   h2 {
     @apply font-serif text-3xl;
   }
+  h3 {
+    @apply font-serif text-2xl;
+  }
   p {
     @apply font-sans;
   }

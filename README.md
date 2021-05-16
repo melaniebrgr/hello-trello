@@ -60,7 +60,7 @@ To help divide and organize the work, here are the user stories I extratec from 
 - [x] As an activity manager I want to edit or delete created lists.
 - [x] As an activity manager I want to create tasks and assign them to a list.
 - [x] As an activity manager I want to edit or delete a task.
-- [ ] As an activity agent I want to see all lists and tasks' progress.
+- [x] As an activity agent I want to see all lists and tasks' progress.
 - [ ] As an activity agent I want to update the status of a task.
 
 ## Improvements

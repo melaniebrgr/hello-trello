@@ -1,6 +1,12 @@
 import { useDispatch } from 'react-redux'
 import { listDeleted } from '../../../store/domains/lists'
 
+const headerStyles = `mb-2`
+const editorStyles = `
+  cursor-pointer
+  hover:text-indigo-900
+`
+
 function ListViewer({ id, title, children, onToggleEdit }) {
   const dispatch = useDispatch()
   const onDelete = () => {
@@ -9,7 +15,12 @@ function ListViewer({ id, title, children, onToggleEdit }) {
 
   return (
     <>
-      <h3>{title}{' '}<span onClick={onDelete}>➖</span><span onClick={onToggleEdit}>✏️</span></h3>
+      <header className={headerStyles}>
+        <h3>{title}{' '}
+          <span onClick={onToggleEdit} className={editorStyles}>[✏]</span>
+          <span onClick={onDelete} className={editorStyles}>[-]</span>
+        </h3>
+      </header>
       { children }
     </>
   );

@@ -2,6 +2,12 @@ import { useState } from 'react';
 import ListEditor from '../../ListEditor/ListEditor'
 import ListViewer from './ListViewer'
 
+const listStyles = `
+  bg-indigo-200
+  m-2
+  p-2
+`
+
 function List({ id, title, children }) {
   const [ listEditRequested, setListEditRequested ] = useState(false)
   const onToggleListEditingRequested = () => { 
@@ -9,7 +15,7 @@ function List({ id, title, children }) {
   }
 
   return (
-    <div>
+    <div className={listStyles}>
       { listEditRequested
         ? <ListEditor id={id} title={title} onToggleEdit={onToggleListEditingRequested} />
         : <ListViewer id={id} title={title} onToggleEdit={onToggleListEditingRequested}>{children}</ListViewer>

@@ -4,6 +4,26 @@ import { useForm } from "react-hook-form"
 import { v4 as uuid } from 'uuid';
 import { taskCreated } from '../../store/domains/tasks'
 
+const taskCreatorStyles = `
+  mt-2
+  text-sm
+`
+
+const inputStyles = `
+  border rounded-sm border-indigo-500
+  px-2 py-0.5
+`
+
+const submitStyles = `
+  bg-indigo-500 hover:bg-indigo-700
+  px-2 py-0.5
+`
+
+const buttonStyles = `
+  cursor-pointer
+  text-left text-indigo-500 hover:text-indigo-700
+`
+
 function TaskCreator({ listId }) {
   const [ taskCreationRequested, setTaskCreationRequested ] = useState(false)
   const onToggleTaskCreationRequested = () => { 
@@ -18,17 +38,17 @@ function TaskCreator({ listId }) {
   }
 
   return (
-    <>
+    <div className={taskCreatorStyles}>
       { taskCreationRequested
         ? (<form onSubmit={handleSubmit(onSubmit)}>
-            <label htmlFor="task">task</label>
-            <input id="task" autoFocus placeholder="What do you need to do?" {...register("task", { required: true })} />
+            <input id="task" autoFocus placeholder="What do you need to do?" {...register("task", { required: true })} className={inputStyles} />{' '}
             {errors.question && <p>This field is required</p>}
-            <input type="submit" />
+            <input type="submit" className={submitStyles} />{' '}
+            <button onClick={onToggleTaskCreationRequested} className={buttonStyles}>Cancel</button>
           </form>)
-        : <p onClick={onToggleTaskCreationRequested}>Create new task ➕</p>
+        : <button onClick={onToggleTaskCreationRequested} className={buttonStyles}>create new task [+]</button>
       }
-    </>
+    </div>
   )
 }
 

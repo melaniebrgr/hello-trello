@@ -6,7 +6,7 @@ import { listCreated } from '../../store/domains/lists'
 
 function ListCreator() {
   const [ listCreationRequested, setListCreationRequested ] = useState(false)
-  const toggleListCreationRequested = () => { 
+  const onToggleListCreationRequested = () => { 
     setListCreationRequested(!listCreationRequested)
   }
 
@@ -14,7 +14,7 @@ function ListCreator() {
   const dispatch = useDispatch()
   const onSubmit = ({ title }) => {
     dispatch(listCreated({ id: uuid(), title }))
-    toggleListCreationRequested()
+    onToggleListCreationRequested()
   }
 
   return (
@@ -26,7 +26,7 @@ function ListCreator() {
             {errors.question && <p>This field is required</p>}
             <input type="submit" />
           </form>)
-        : <p onClick={toggleListCreationRequested}>Create new list +</p>
+        : <p onClick={onToggleListCreationRequested}>Create new list ➕</p>
       }
       
 

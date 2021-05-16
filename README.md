@@ -57,7 +57,7 @@ These modules should accordinly accomodate the following events:
 To help divide and organize the work, here are the user stories I extratec from the "workflow" analysis:
 
 - [x] As an activity manager I want to create lists for eventual tasks.
-- [-] As an activity manager I want to edit or delete created lists.
+- [x] As an activity manager I want to edit or delete created lists.
 - [ ] As an activity manager I want to create tasks and assign them to a list.
 - [ ] As an activity manager I want to edit or delete a task.
 - [ ] As an activity agent I want to see all lists and tasks' progress.

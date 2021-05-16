@@ -65,6 +65,19 @@ To help divide and organize the work, here are the user stories I extratec from 
 
 ## Improvements
 
+I would like to have additionally,
+
+- Added unit tests for components that contained logic
+- Added integration tests for main user flows
+- Added localstorage persistance (I timeboxed adding redux-persist but it didn't integrate smoothly with `@reduxjs/toolkit`)
+
 ## Getting started
 
+- `git clone git@github.com:melaniebrgr/hello-trello.git`
+- `cd hello-trello`
+- `yarn install` (node >=12.13.0)
+- `yarn start`
+
 ## Preview
+
+![preview](./assets/preview.png)

@@ -40,7 +40,7 @@ Accordingly, this initial set of front-end modules are envisioned:
 - Activity viewer
 - Task editor
 
-These modules should accordinly accomodate the following events:
+These modules should accordingly accomodate the following events:
 
 - List created
 - List deleted

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { listDelete } from '../../../store/domains/lists'
 import ListEditor from '../../ListEditor/ListEditor'
 
-function List({ id, title }) {
+function List({ id, title, children }) {
   const dispatch = useDispatch()
   const onDelete = () => {
     dispatch(listDelete(id))
@@ -17,7 +17,10 @@ function List({ id, title }) {
     <div>
       { listEditRequested
         ? <ListEditor id={id} title={title} onToggleListCreationRequested={onToggleListCreationRequested} />
-        : <h3>{title}{' '}<span onClick={onDelete}>➖</span><span onClick={onToggleListCreationRequested}>✏️</span></h3>
+        : (<>
+            <h3>{title}{' '}<span onClick={onDelete}>➖</span><span onClick={onToggleListCreationRequested}>✏️</span></h3>
+            { children }
+          </>)
       }
     </div>
   );

@@ -28,8 +28,6 @@ function ListCreator() {
           </form>)
         : <p onClick={onToggleListCreationRequested}>Create new list ➕</p>
       }
-      
-
     </>
   )
 }

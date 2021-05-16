@@ -7,7 +7,11 @@ export const tasks = createSlice({
   reducers: {
     taskCreated: (state, action) => {
       state.push(action.payload)
-    }
+    },
+    taskDeleted: (state, action) => {
+      const i = state.findIndex(task => task.id === action.payload)
+      state.splice(i, 1);
+    },
   },
   extraReducers: {
     [String(listDeleted)]: (state, action) => {
@@ -16,6 +20,6 @@ export const tasks = createSlice({
   }
 })
 
-export const { taskCreated } = tasks.actions
+export const { taskCreated, taskDeleted } = tasks.actions
 
 export default tasks.reducer

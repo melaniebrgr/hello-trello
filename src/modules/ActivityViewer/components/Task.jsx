@@ -1,6 +1,16 @@
-function Task({ text }) {
+import { useDispatch } from 'react-redux'
+import { taskDeleted } from '../../../store/domains/tasks'
+
+function Task({ id, text }) {
+  const dispatch = useDispatch()
+  const onDelete = () => {
+    dispatch(taskDeleted(id))
+  }
+
   return (
-    <p>{text}</p>
+    <div>
+      <span>{text}</span><span onClick={onDelete}>➖</span>
+    </div>
   );
 }
 

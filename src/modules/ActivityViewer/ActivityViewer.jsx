@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import List from './components/List'
+import List from '../ListEditor/List'
 import Tasks from './components/Tasks'
 import TaskCreator from '../TaskCreator/TaskCreator'
 import { selectLists } from './activityViewer.selectors'

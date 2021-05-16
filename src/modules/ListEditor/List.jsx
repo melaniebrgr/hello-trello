@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ListEditor from '../../ListEditor/ListEditor'
+import ListEditor from './ListEditor'
 import ListViewer from './ListViewer'
 
 const listStyles = `

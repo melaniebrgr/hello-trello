@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { Draggable } from 'react-beautiful-dnd';
-import { taskDeleted } from '../../../store/domains/tasks'
+import { taskDeleted } from '../../store/domains/tasks'
 
 const taskViewerStyles = `
   font-serif

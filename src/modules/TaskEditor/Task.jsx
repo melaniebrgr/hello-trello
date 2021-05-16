@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import TaskEditor from '../../TaskEditor/TaskEditor'
+import TaskEditor from './TaskEditor'
 import TaskViewer from './TaskViewer'
 
 function Task({ id, text, index }) {

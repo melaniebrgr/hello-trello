@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
-import Task from './Task'
+import Task from '../../TaskEditor/Task'
 import { selectTasksByListId } from '../activityViewer.selectors'
 
 function Tasks({ listId }) {

@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { Droppable } from 'react-beautiful-dnd';
-import { listDeleted } from '../../../store/domains/lists'
+import { listDeleted } from '../../store/domains/lists'
 
 const headerStyles = `mb-2`
 const editorStyles = `

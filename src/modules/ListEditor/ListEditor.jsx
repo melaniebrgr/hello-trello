@@ -2,12 +2,12 @@ import { useDispatch } from 'react-redux'
 import { useForm } from "react-hook-form"
 import { listEdited } from '../../store/domains/lists'
 
-function ListEditor({ id, title, onToggleListCreationRequested }) {
+function ListEditor({ id, title, onToggleEdit }) {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const dispatch = useDispatch()
   const onSubmit = ({ title }) => {
     dispatch(listEdited({ id, title }))
-    onToggleListCreationRequested()
+    onToggleEdit()
   }
 
   return (

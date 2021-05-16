@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { listDeleted } from '../../../store/domains/lists'
 
-function ListViewer({ id, title, children, onToggleListCreationRequested }) {
+function ListViewer({ id, title, children, onToggleEdit }) {
   const dispatch = useDispatch()
   const onDelete = () => {
     dispatch(listDeleted(id))
@@ -9,7 +9,7 @@ function ListViewer({ id, title, children, onToggleListCreationRequested }) {
 
   return (
     <>
-      <h3>{title}{' '}<span onClick={onDelete}>➖</span><span onClick={onToggleListCreationRequested}>✏️</span></h3>
+      <h3>{title}{' '}<span onClick={onDelete}>➖</span><span onClick={onToggleEdit}>✏️</span></h3>
       { children }
     </>
   );

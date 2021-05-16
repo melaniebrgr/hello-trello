@@ -4,15 +4,15 @@ import ListViewer from './ListViewer'
 
 function List({ id, title, children }) {
   const [ listEditRequested, setListEditRequested ] = useState(false)
-  const onToggleListCreationRequested = () => { 
+  const onToggleListEditingRequested = () => { 
     setListEditRequested(!listEditRequested)
   }
 
   return (
     <div>
       { listEditRequested
-        ? <ListEditor id={id} title={title} onToggleListCreationRequested={onToggleListCreationRequested} />
-        : <ListViewer id={id} title={title} onToggleListCreationRequested={onToggleListCreationRequested}>{children}</ListViewer>
+        ? <ListEditor id={id} title={title} onToggleEdit={onToggleListEditingRequested} />
+        : <ListViewer id={id} title={title} onToggleEdit={onToggleListEditingRequested}>{children}</ListViewer>
       }
     </div>
   );

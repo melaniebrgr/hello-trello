@@ -15,6 +15,10 @@ export const tasks = createSlice({
     taskEdited: (state, action) => {
       const i = state.findIndex(task => task.id === action.payload.id)
       state[i].text = action.payload.text
+    },
+    taskStatusUpdated: (state, action) => {
+      const i = state.findIndex(task => task.id === action.payload.id)
+      state[i].listId = action.payload.listId
     }
   },
   extraReducers: {
@@ -24,6 +28,6 @@ export const tasks = createSlice({
   }
 })
 
-export const { taskCreated, taskDeleted, taskEdited } = tasks.actions
+export const { taskCreated, taskDeleted, taskEdited, taskStatusUpdated } = tasks.actions
 
 export default tasks.reducer

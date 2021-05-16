@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux'
+import { Droppable } from 'react-beautiful-dnd';
 import { listDeleted } from '../../../store/domains/lists'
 
 const headerStyles = `mb-2`
@@ -21,7 +22,14 @@ function ListViewer({ id, title, children, onToggleEdit }) {
           <span onClick={onDelete} className={editorStyles}>[-]</span>
         </h3>
       </header>
-      { children }
+      <Droppable droppableId={id}>
+        {(provided) => (
+          <div ref={provided.innerRef}>
+            {children}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
     </>
   );
 }

@@ -10,7 +10,7 @@ function Tasks({ listId }) {
   )
 
   return (
-    tasks.map(({ id, text }) => <Task key={id} id={id} text={text} />)
+    tasks.map(({ id, text }, index) => <Task key={id} id={id} text={text} index={index} />)
   )
 }
 

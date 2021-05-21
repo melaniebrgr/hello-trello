@@ -42,7 +42,7 @@ function TaskCreator({ listId }) {
       { taskCreationRequested
         ? (<form onSubmit={handleSubmit(onSubmit)}>
             <input id="task" autoFocus placeholder="What do you need to do?" {...register("task", { required: true })} className={inputStyles} />{' '}
-            {errors.question && <p>This field is required</p>}
+            {errors.task && <span>This field is required</span>}
             <input type="submit" className={submitStyles} />{' '}
             <button onClick={onToggleTaskCreationRequested} className={buttonStyles}>Cancel</button>
           </form>)

@@ -41,9 +41,9 @@ function ListCreator() {
       { listCreationRequested
         ? (<form onSubmit={handleSubmit(onSubmit)}>
             <input id="title" autoFocus placeholder="What is this list called?" {...register("title", { required: true })} className={inputStyles} />{' '}
-            {errors.question && <p> This field is required</p>}
-            <input type="submit" className={submitStyles} />{` `}
+            <input type="submit" className={submitStyles} />{' '}
             <button onClick={onToggleListCreationRequested} className={buttonStyles}>Cancel</button>
+            {errors.title && <span> This field is required</span>}{' '}
           </form>)
         : <button onClick={onToggleListCreationRequested} className={buttonStyles}>create new list [+]</button>
       }

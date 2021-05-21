@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { useForm } from "react-hook-form"
+import { Droppable } from 'react-beautiful-dnd';
 import { listEdited } from '../../store/domains/lists'
 
 const inputStyles = `
@@ -17,7 +18,7 @@ const buttonStyles = `
   text-left text-indigo-500 hover:text-indigo-700
 `
 
-function ListEditor({ id, title, onToggleEdit }) {
+function ListEditor({ id, title, onToggleEdit, children }) {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const dispatch = useDispatch()
   const onSubmit = ({ title }) => {
@@ -26,12 +27,22 @@ function ListEditor({ id, title, onToggleEdit }) {
   }
 
   return (
+    <>
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input id="title" defaultValue={title} autoFocus {...register("title", { required: true })} className={inputStyles} />
+      <input id="title" defaultValue={title} autoFocus {...register("title", { required: true })} className={inputStyles} />{' '}
       {errors.question && <p> This field is required</p>}
       <input type="submit" className={submitStyles} />{' '}
       <button onClick={onToggleEdit} className={buttonStyles}>Cancel</button>
     </form>
+    <Droppable droppableId={id}>
+        {(provided) => (
+          <div ref={provided.innerRef}>
+            {children}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+    </>
   )
 }
 

@@ -17,7 +17,7 @@ function List({ id, title, children }) {
   return (
     <div className={listStyles}>
       { listEditRequested
-        ? <ListEditor id={id} title={title} onToggleEdit={onToggleListEditingRequested} />
+        ? <ListEditor id={id} title={title} onToggleEdit={onToggleListEditingRequested}>{children}</ListEditor>
         : <ListViewer id={id} title={title} onToggleEdit={onToggleListEditingRequested}>{children}</ListViewer>
       }
     </div>

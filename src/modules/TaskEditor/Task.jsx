@@ -8,14 +8,9 @@ function Task({ id, text, index }) {
     setTaskEditRequested(!taskEditRequested)
   }
 
-  return (
-    <>
-      { taskEditRequested
-        ? <TaskEditor id={id} text={text} onToggleEdit={onToggleTaskEditingRequested} />
-        : <TaskViewer id={id} text={text} onToggleEdit={onToggleTaskEditingRequested} index={index} />
-      }
-    </>
-  );
+  return (taskEditRequested
+    ? <TaskEditor id={id} text={text} onToggleEdit={onToggleTaskEditingRequested} />
+    : <TaskViewer id={id} text={text} onToggleEdit={onToggleTaskEditingRequested} index={index} />)
 }
 
 export default Task

@@ -40,7 +40,7 @@ Accordingly, this initial set of front-end modules are envisioned:
 - Activity viewer
 - Task editor
 
-These modules should accordinly accomodate the following events:
+These modules should accordingly accomodate the following events:
 
 - List created
 - List deleted
@@ -54,7 +54,7 @@ These modules should accordinly accomodate the following events:
 
 ## Stories
 
-To help divide and organize the work, here are the user stories I extratec from the "workflow" analysis:
+To help divide and organize the work, here are the user stories I extrated from the "workflow" analysis:
 
 - [x] As an activity manager I want to create lists for eventual tasks.
 - [x] As an activity manager I want to edit or delete created lists.
